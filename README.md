@@ -2,15 +2,15 @@
 
 Gospel Calendar is an open API that provides liturgical gospel reading data for each day, including liturgical colors. It is part of the [synopticus.org](https://www.synopticus.org) project. 
 
-
-## Example Request
+## Example
 To fetch the gospel readings for a specific date, make a GET request to the following endpoint:
 
+### Request
 ```
 https://www.synopticus.org/gospel-calendar/api.php?date=2025-01-07
 ```
 
-### Example Response
+### Response
 ```json
 {
   "date": "2025-01-07",
@@ -47,7 +47,11 @@ https://www.synopticus.org/gospel-calendar/api.php?date=2025-01-07
 }
 ```
 
-## Response Format
+## Request
+
+The API accepts requests for dates ranging from `1901-01-01` to `2100-12-31`. The date parameter is required and must be in `YYYY-MM-DD` format.
+
+## Response
 The API returns data in JSON format. Each response includes the following fields:
 
 ### Root Fields
@@ -67,7 +71,7 @@ Each object in the `gospels` array includes the following fields:
 - **intervals** (array of objects): List of passage intervals. Each interval includes:
   - **start** (object): Beginning of the passage.
     - `chapter` (integer): Chapter number.
-    - `verse` (string): Verse number. Could end with `a` or `b`
+    - `verse` (string): Verse number. Could end with char `a` or `b`
   - **end** (object): End of the passage.
     - `chapter` (integer): Chapter number.
-    - `verse` (string): Verse number. Could end with `a` or `b`
+    - `verse` (string): Verse number. Could end with char `a` or `b`
