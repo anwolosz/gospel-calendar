@@ -23,6 +23,6 @@ jobs:
           server: ${{ env.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: /gospel-calendar
+          local-dir: gospel-calendar/
           server-dir: /www/gospel-calendar
           
