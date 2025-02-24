@@ -1,0 +1,28 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to FTP server
+        if: env.FTP_SERVER != ''
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ env.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist/
+          server-dir: /www/
+          exclude: README.md
