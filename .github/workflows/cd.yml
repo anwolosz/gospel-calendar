@@ -23,6 +23,6 @@ jobs:
           server: ${{ env.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./
-          server-dir: /www/
-          exclude: README.md
+          local-dir: /gospel-calendar
+          server-dir: /www/gospel-calendar
+          
