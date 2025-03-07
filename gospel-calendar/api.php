@@ -10,18 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
     exit(json_encode(['error' => 'Only GET requests are allowed.']));
 }
 
-session_start();
-if (!isset($_SESSION['last_request_time'])) {
-    $_SESSION['last_request_time'] = time();
-} else {
-    $timeDiff = time() - $_SESSION['last_request_time'];
-    if ($timeDiff < 1) {
-        http_response_code(429);
-        exit(json_encode(['error' => 'Too many requests.']));
-    }
-    $_SESSION['last_request_time'] = time();
-}
-
 try {
     $db = new PDO('sqlite:calendar.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
