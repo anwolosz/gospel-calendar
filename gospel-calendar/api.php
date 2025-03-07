@@ -1,5 +1,6 @@
 <?php
-header("Access-Control-Allow-Origin: *");
+$allowedOrigin = 'https://www.synopticus.org';
+header("Access-Control-Allow-Origin: $allowedOrigin");
 header("Access-Control-Allow-Methods: GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 header('Content-Type: application/json');
